@@ -58,6 +58,20 @@ Update sets with more than 1000 configuration updates should be broken down into
 ### Updates in wrong update set scope
 The scope for Customer Update [sys_update_xml] records should match the scope of the Update Set in which the Customer Update resides. Having a mismatch may cause Update Sets to generate preview errors meaning you cannot commit them until the errors are resolved.
 
+### Update Sets without description
+At least completed update sets should have a description. By this, it's easier to see the business requirement behind the development.
+The decision if development can be reverted is easier with documented update sets.
+
+### Update set unique names
+Update sets should have unique names to avoid confusion when they should be deployed or reviewed. It's not always the developer who deploys or link update sets to parents or batches.
+
+### Roles directly assigned
+To maintain the manageability of the user administration it is best practice to assign roles to groups and not directly to users.
+A user gets the roles by being a member of a group.
+
+### KMS Ownership Groups enabled
+When the sys_property glide.knowman.ownership_group.enabled is set to true all knowledge articles should have an ownership group. By this the process is not broken and the kb articles can be maintained and updated.
+
 ## Category: Upgradability
 
 ### Incident table should not be extended
@@ -146,9 +160,19 @@ For table that store reports definition there is also posibility to assign roles
 ### Scheduled Job with RunAs set as Locked Out user
 Detecting no longer active user with flag Locked Out set to true that is set as a RunAs for Scheduled Job
 
+### Reports published to 'Public'
+A report can be published to 'public' and if all ACLs of the source tables are correctly configured no data will be exposed. 
+Never the less it's best practice to keep the first barrier of security and publish reports to groups, roles or users.
+
 ## Category: User Experience
 
+### KB Article valid_to date not empty
+The quality of the knowledge management process is key for the end-user experience. For this, it is mandatory that published kb articles have a valid_to date and will be reviewed on a regular base.
+The same applies to knowledge blocks.
 
+### KB Article valid_to date reasonable
+The valid_to date of a kb article should neither be in the past nor too far in the future (> 1 year).
+The same applies to knowledge blocks.
 
 # Additional resources
 
